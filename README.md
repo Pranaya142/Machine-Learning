@@ -2,6 +2,8 @@
 
 
 Machine learns from Historical Data.
+
+
 3 Phase:
 
 1.  we need to first Train the machine which is Training phase.
