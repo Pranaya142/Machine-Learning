@@ -27,5 +27,22 @@ Sklearn transformers:
                  we get alternate values in the dataset.with this machine cannot predict the values perfectly.
                  so we have to specify this "random_state=0" parameter.
            4.    in this code we can find x_train,x_test and y_train,y_test values.
-           5.    while passing arguments into the train_test_split() function,no need to give both train_size and test_size,one is enough to pass.machine                  will automatically understands remaining.
-           
+           5.    while passing arguments into the train_test_split() function,no need to give both train_size and test_size,
+                 one is enough to pass.machine will automatically understands remaining.
+    
+    4.   .linear_model:   (from sklearn.linear_model import LinearRegression)
+
+          1.     with this transformer we build a model.
+          2.     define a variable regressor and assign the LinearRegression() to it.
+          3.     now with that parameter we can fit the x_train and y_train values.(regressor.fit(x_train,y_train))
+
+    5.    predict the values:
+
+                pass the x_test values to the regressor.predict function(ypred = regressor.predict(x_test))
+
+
+To predict Future we sholud know slope(m) and constant(c) values.
+
+use  m= regressor.coef_           (because in y=mx+c linear equation m is the coeffient of x)
+
+c= regressor.intersept_      (c is the constant)
