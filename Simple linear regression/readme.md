@@ -4,7 +4,7 @@
     2.  read the data (df = pd.read_csv(r''))
     3.  devide the data into dependent and independent using df.iloc[]
     4.  cleaned the data
-    5.  testin with 80-20 ratio.
+    5.  test with 80-20 ratio.
 
 Used Sklearn framework to work data preprocessing. 
 
