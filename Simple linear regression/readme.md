@@ -46,3 +46,9 @@ To predict Future we sholud know slope(m) and constant(c) values.
 use  m= regressor.coef_           (because in y=mx+c linear equation m is the coeffient of x)
 
 c= regressor.intersept_      (c is the constant)
+
+
+
+Used Pickle module for zip the model and save the model in the sysytem using import os & os.getcwd() function.
+
+created front end for the model using Streamlit framework.
