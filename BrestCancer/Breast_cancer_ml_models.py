@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import pickle
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
@@ -17,9 +17,11 @@ import xgboost as Xgb
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import mean_absolute_error,mean_squared_error,r2_score
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix,accuracy_score,classification_report
 from sklearn.naive_bayes import GaussianNB
 from sklearn.naive_bayes import BernoulliNB
+import lightgbm as lgbm
+
 
 
 dataset = pd.read_csv(r'D:\GenAi\ML\BrestCancer\Breast_cancer_dataset.csv')
@@ -51,7 +53,8 @@ models = {'LogisticRegression': LogisticRegression(),
           'xgboost':Xgb.XGBRegressor(),
           'KNeighboursClassifier': KNeighborsClassifier(),
           'GaussianNB': GaussianNB(),
-          'BernoulliNB': BernoulliNB()
+          'BernoulliNB': BernoulliNB(),
+          'lgboost': lgbm.LGBMClassifier()
           }
 
 result=[]
@@ -68,6 +71,12 @@ for name,model in models.items():
 
     variance = model.score(x_test,y_test)
     print('model name:',name,'variance:',variance)
+    
+    '''ac_score= accuracy_score(y_test,y_pred)
+    print('Model Name:',name,'Accuracy_score:',ac_score)'''
+    
+    ''' cr_val= cross_val_score(model,x,y)
+    print('Model name:',name,'Cross_validation_score:',cr_val)'''
 
 
     result.append({'Model': name,
@@ -75,7 +84,14 @@ for name,model in models.items():
                    'MSE': mse,
                    'R2': r2,
                    'Bias':bias,
-                   'Variance':variance})
+                   'Variance':variance,
+                   #'Accuracy_score': ac_score,
+                  # 'Cross_validation_score':cr_val
+                   })
+    with open(f'{name}.pkl', 'wb') as f:
+        pickle.dump(model, f)
+    
+
     
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
@@ -100,8 +116,6 @@ else:
 ## malignant cancer patients are more than bengin cancer patients.
 
 
-with open(f'{name}.pkl', 'wb') as f:
-        pickle.dump(model, f)
 
 # Convert results to DataFrame and save to CSV
 result_df = pd.DataFrame(result)
