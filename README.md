@@ -17,19 +17,17 @@ In ML model data is devide into  3 types.
              Here we use Regression Algo
 
           Examples of Regression Algo: Linear_regression,Support Vector Regression, Random Forest,KNN,Lasso Regression.
-      3. Classification model( Dependent Variable is binary(0/1))
+      2. Classification model( Dependent Variable is binary(0/1))
              Here we use Classification Algo
 
          Examples of Classification Algo: Logistic,KNN,NaiveBayes,Xgboost,Lgboost,Decision Tree
-
-
-      2.  Unsupervised Data
+2.  Unsupervised Data
               1. Clustering Model( No Dependetn variable(Gruoping))
                    Here we use Clustering Algo
 
                     Clustering Algo:  KMeans Cluster,Hierarchial And DBSCAN
 
-      4.  Semi Supervised Data.
+3. Semi Supervised Data.
           combination of both 1 and 2.
 
 
